@@ -17,7 +17,7 @@ export default async function handler(req, res) {
       const newCharacter = await prisma.character.create({
         data: {
           name,
-          Anime: { connect: { id: animeId } } // Use Anime directly instead of animeId
+          Anime: { connect: { id: animeId } }
         },
       });
       res.status(201).json(newCharacter);
