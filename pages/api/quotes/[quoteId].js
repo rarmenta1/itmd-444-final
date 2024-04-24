@@ -1,4 +1,4 @@
-// src/app/pages/api/quotes/[quoteId].js
+// pages/api/quotes/[quoteId].js
 import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
