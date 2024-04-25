@@ -19,7 +19,7 @@ const Login = () => {
       const response = await axios.post('/api/auth/login', { email, password });
       const { token } = response.data;
       localStorage.setItem('token', token);
-      router.push('/');
+      router.push('/home');
     } catch (error) {
       console.error('Error logging in:', error);
       if (error.response && error.response.data && error.response.data.message) {
