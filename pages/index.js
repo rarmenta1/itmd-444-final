@@ -17,7 +17,7 @@ const Register = () => {
     
     try {
       await axios.post('/api/auth/register', { email, password });
-      router.push('/login');
+      router.push('/home');
     } catch (error) {
       console.error('Error registering:', error);
       if (error.response && error.response.data && error.response.data.message) {
