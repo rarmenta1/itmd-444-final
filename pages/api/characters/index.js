@@ -20,7 +20,7 @@ export default async function handler(req, res) {
           Anime: { connect: { id: animeId } }
         },
       });
-      res.status(201).json(newCharacter);
+      res.status(201).json({ message: 'Character created successfully', character: newCharacter });
     } catch (error) {
       console.error('Error creating character:', error);
       res.status(500).json({ error: 'Failed to create character', details: error.message });

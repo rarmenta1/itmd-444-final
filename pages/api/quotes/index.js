@@ -17,7 +17,7 @@ export default async function handler(req, res) {
       const newQuote = await prisma.quote.create({
         data: { text, Anime: { connect: { id: animeId } }, Character: { connect: { id: characterId } } },
       });
-      res.status(201).json(newQuote);
+      res.status(201).json({ message: 'Quote created successfully', quote: newQuote });
     } catch (error) {
       res.status(500).json({ error: 'Failed to create quote' });
     }

@@ -16,7 +16,7 @@ export default async function handler(req, res) {
       const newAnime = await prisma.anime.create({
         data: { title },
       });
-      res.status(201).json(newAnime);
+      res.status(201).json({ message: 'Anime created successfully', anime: newAnime });
     } catch (error) {
       res.status(500).json({ error: 'Failed to create anime' });
     }
