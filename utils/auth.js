@@ -1,4 +1,4 @@
-// src/app/utils/auth.js
+// utils/auth.js
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
 
