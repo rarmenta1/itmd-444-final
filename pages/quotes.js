@@ -33,7 +33,7 @@ const QuoteList = () => {
   }, []);
 
   const goToHome = () => {
-    router.push('/');
+    router.push('/home');
   };
 
   const handleUpdate = (quoteId) => {

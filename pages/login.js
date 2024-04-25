@@ -1,47 +1,49 @@
-// pages/register.js
+// pages/login.js
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import axios from 'axios';
 
-const Register = () => {
+const Login = () => {
   const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-  
-  const handleRegister = async () => {
+
+  const handleLogin = async () => {
     if (!email || !password) {
       setErrorMessage('Email and password cannot be empty');
       return;
     }
-    
+
     try {
-      await axios.post('/api/auth/register', { email, password });
-      router.push('/login');
+      const response = await axios.post('/api/auth/login', { email, password });
+      const { token } = response.data;
+      localStorage.setItem('token', token);
+      router.push('/');
     } catch (error) {
-      console.error('Error registering:', error);
+      console.error('Error logging in:', error);
       if (error.response && error.response.data && error.response.data.message) {
         setErrorMessage(error.response.data.message);
       } else {
-        setErrorMessage('An error occurred during registration.');
+        setErrorMessage('Email or password is incorrect.');
       }
     }
   };
 
-  const goToLogin = () => {
-    router.push('/login');
+  const goToHome = () => {
+    router.push('/');
   };
 
   return (
     <div>
-      <h1>Register</h1>
+      <h1>Login</h1>
       <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
       <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
       {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
-      <button onClick={handleRegister}>Register</button>
-      <button onClick={goToLogin}>Go to Login</button>
+      <button onClick={handleLogin}>Login</button>
+      <button onClick={goToHome}>Go to Home</button>
     </div>
   );
 };
 
-export default Register;
+export default Login;
