@@ -14,10 +14,10 @@ const Register = () => {
       setErrorMessage('Email and password cannot be empty');
       return;
     }
-    
+
     try {
       await axios.post('/api/auth/register', { email, password });
-      router.push('/home');
+      router.push('/home'); // Redirect to home after successful registration
     } catch (error) {
       console.error('Error registering:', error);
       if (error.response && error.response.data && error.response.data.message) {
