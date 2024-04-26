@@ -41,7 +41,7 @@ const Login = () => {
       <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
       {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
       <button onClick={handleLogin}>Login</button>
-      <button onClick={goToHome}>Go to Home</button>
+      <button onClick={goToHome}>Go to Register</button>
     </div>
   );
 };
